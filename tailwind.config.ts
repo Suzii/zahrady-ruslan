@@ -64,14 +64,14 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				garden: {
-					moss: '#558B4E',
-					sage: '#90A876',
+					moss: '#6B7B47',
+					sage: '#9CAF88',
 					earth: '#8B4513',
 					bark: '#654321',
-					stone: '#A0AF8C',
-					leaf: '#3E5D2E',
-					cream: '#F8FAF5',
-					forest: '#2D4026'
+					stone: '#A8A49C',
+					leaf: '#4A5D23',
+					cream: '#F5F5DC',
+					forest: '#355E3B'
 				}
 			},
 			borderRadius: {
