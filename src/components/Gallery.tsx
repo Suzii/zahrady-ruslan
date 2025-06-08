@@ -11,12 +11,30 @@ const Gallery = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
 
   const images = [
-    'https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    'https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    'https://images.unsplash.com/photo-1518495973542-4542c06a5843?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    'https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    'https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+    {
+      url: 'https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      description: 'Travnatá zahrada s nově položeným trávníkem a okrasnými rostlinami'
+    },
+    {
+      url: 'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      description: 'Moderní zahradní design s vyvýšenými záhony a dekorativními kameny'
+    },
+    {
+      url: 'https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      description: 'Realizace zahradních chodníčků z přírodního kamene'
+    },
+    {
+      url: 'https://images.unsplash.com/photo-1518495973542-4542c06a5843?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      description: 'Kompletní zahradní úprava s automatickým zavlažovacím systémem'
+    },
+    {
+      url: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      description: 'Mlatová cesta s okrasnými keři a sezónním osázením'
+    },
+    {
+      url: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      description: 'Terénní úpravy s výsadbou stromů a tvarovanými záhony'
+    }
   ];
 
   const goToNext = () => {
@@ -91,7 +109,7 @@ const Gallery = () => {
                   >
                     <div 
                       className="w-full h-full bg-cover bg-center transition-transform duration-300 group-hover:scale-110"
-                      style={{ backgroundImage: `url('${image}')` }}
+                      style={{ backgroundImage: `url('${image.url}')` }}
                     />
                     <div className="absolute inset-0 bg-garden-forest/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -106,9 +124,9 @@ const Gallery = () => {
                 <DialogContent className="max-w-4xl w-full p-0 bg-transparent border-none">
                   <div className="relative">
                     <img 
-                      src={images[selectedImageIndex || 0]} 
-                      alt={`Zahradní projekt ${(selectedImageIndex || 0) + 1}`}
-                      className="w-full h-auto max-h-[90vh] object-contain rounded-lg"
+                      src={images[selectedImageIndex || 0].url} 
+                      alt={images[selectedImageIndex || 0].description}
+                      className="w-full h-auto max-h-[80vh] object-contain rounded-lg"
                     />
                     
                     {/* Navigation buttons */}
@@ -127,8 +145,13 @@ const Gallery = () => {
                     </button>
                     
                     {/* Image counter */}
-                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 text-white px-3 py-1 rounded-full text-sm">
+                    <div className="absolute top-4 left-1/2 -translate-x-1/2 bg-black/70 text-white px-3 py-1 rounded-full text-sm">
                       {(selectedImageIndex || 0) + 1} / {images.length}
+                    </div>
+
+                    {/* Image description */}
+                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/80 text-white px-4 py-2 rounded-lg text-center max-w-lg mx-4">
+                      <p className="text-sm">{images[selectedImageIndex || 0].description}</p>
                     </div>
                   </div>
                 </DialogContent>
