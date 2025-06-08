@@ -1,5 +1,5 @@
 
-import React from 'react';
+import * as React from 'react';
 
 const Services = () => {
   const services = [
@@ -50,8 +50,12 @@ const Services = () => {
                 className="bg-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 fade-in-up"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="w-12 h-12 bg-garden-sage rounded-full mb-6 flex items-center justify-center">
-                  <div className="w-6 h-6 bg-garden-forest rounded-full"></div>
+                <div className={`w-12 h-12 rounded-full mb-6 flex items-center justify-center ${
+                  index % 4 === 0 ? 'bg-garden-emerald' :
+                  index % 4 === 1 ? 'bg-garden-lime' :
+                  index % 4 === 2 ? 'bg-garden-amber' : 'bg-garden-terracotta'
+                }`}>
+                  <div className="w-6 h-6 bg-white rounded-full"></div>
                 </div>
                 <h3 className="text-xl font-playfair font-semibold text-garden-forest mb-4 capitalize">
                   {service.title}
