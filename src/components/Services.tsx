@@ -1,42 +1,42 @@
 
 import * as React from 'react';
-import { Sprout, TreePine, Droplets, Route, Leaf, Flower2 } from 'lucide-react';
+import { Sprout, TreePine, Droplets, Route, Leaf, Flower2, Square, Layers, Layers2, Grid, Boxes, LucideBoxes, Mountain } from 'lucide-react';
 
 const Services = () => {
   const services = [
     {
-      title: 'pokládka trávníku',
+      title: 'Pokládka trávníku',
       description: 'Profesionální pokládka travních koberců pro dokonalý zelený trávník',
       icon: Sprout,
       gradient: 'from-green-700 to-emerald-700'
     },
     {
-      title: 'sázení',
+      title: 'Závlaha',
+      description: 'Návrh a instalace zavlažovacích systémů pro trávníky i záhony',
+      icon: Droplets,
+      gradient: 'from-teal-700 to-cyan-700'
+    },
+    {
+      title: 'Výsadba',
       description: 'Odborné sázení stromů, keřů a okrasných rostlin podle vašich přání',
       icon: TreePine,
       gradient: 'from-emerald-700 to-teal-700'
     },
     {
-      title: 'závlaha',
-      description: 'Návrh a instalace efektivních zavlažovacích systémů',
-      icon: Droplets,
-      gradient: 'from-teal-700 to-cyan-700'
-    },
-    {
-      title: 'realizace chodníčků',
-      description: 'Vytváření estetických a funkčních zahradních chodníků',
+      title: 'Chodníčy',
+      description: 'Vytváření zahradních stezek a nášlapů, sterku nebo mlatových cest',
       icon: Route,
       gradient: 'from-slate-600 to-gray-600'
     },
     {
-      title: 'mlatové cesty',
-      description: 'Budování přírodních mlatových cest a stezek',
-      icon: Leaf,
-      gradient: 'from-green-600 to-emerald-600'
+      title: 'Suché zídky a skalky',
+      description: 'Budování skalek a zídek z prírodního kamene nebo betonových bloků',
+      icon: Boxes,
+      gradient: 'from-gray-700 to-cyan-700'
     },
     {
-      title: 'vyvýšené záhony',
-      description: 'Konstrukce praktických vyvýšených záhonů pro snadnější pěstování',
+      title: 'Vyvýšené záhony',
+      description: 'Konstrukce praktických vyvýšených záhonů na míru pro snadnější pěstování',
       icon: Flower2,
       gradient: 'from-emerald-600 to-teal-600'
     }
@@ -56,7 +56,7 @@ const Services = () => {
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-green-700 to-emerald-700 mx-auto mb-8 rounded-full"></div>
             <p className="text-xl text-gray-700 max-w-2xl mx-auto fade-in-up">
-              Kompletní spektrum zahradnických služeb pro vytvoření vaší vysněné zahrady
+              Kompletní spektrum zahradnických služeb pro vytvoření a udržbu vaší vysněné zahrady
             </p>
           </div>
 
@@ -79,7 +79,7 @@ const Services = () => {
                       <IconComponent className="w-8 h-8 text-white" />
                     </div>
                     
-                    <h3 className="relative text-xl font-playfair font-semibold text-gray-800 mb-4 capitalize group-hover:text-gray-900 transition-colors">
+                    <h3 className="relative text-xl font-playfair font-semibold text-gray-800 mb-4 group-hover:text-gray-900 transition-colors">
                       {service.title}
                     </h3>
                     <p className="relative text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors">
@@ -94,20 +94,6 @@ const Services = () => {
             })}
           </div>
           
-          {/* Call to action */}
-          <div className="text-center mt-16 fade-in-up">
-            <div className="card-gradient rounded-2xl p-8 max-w-2xl mx-auto">
-              <h3 className="text-2xl font-playfair font-semibold text-gradient mb-4">
-                Potřebujete konzultaci?
-              </h3>
-              <p className="text-gray-600 mb-6">
-                Kontaktujte mě a společně vytvoříme vaši vysněnou zahradu
-              </p>
-              <button className="btn-primary-gradient text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 hover:scale-105">
-                Kontaktovat
-              </button>
-            </div>
-          </div>
         </div>
       </div>
     </section>

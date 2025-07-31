@@ -187,21 +187,6 @@ const Gallery = () => {
               </Dialog>
             ))}
           </div>
-          
-          {/* Gallery CTA */}
-          <div className="text-center mt-16 fade-in-up">
-            <div className="card-gradient rounded-2xl p-8 max-w-2xl mx-auto">
-              <h3 className="text-2xl font-playfair font-semibold text-gradient mb-4">
-                Líbí se vám moje práce?
-              </h3>
-              <p className="text-gray-600 mb-6">
-                Kontaktujte mě a společně vytvoříme podobně krásnou zahradu i pro vás
-              </p>
-              <button className="btn-primary-gradient text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 hover:scale-105">
-                Začít projekt
-              </button>
-            </div>
-          </div>
         </div>
       </div>
     </section>
