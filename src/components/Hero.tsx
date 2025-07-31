@@ -1,12 +1,13 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
+import { HERO_VIDEO_SOURCE } from '../lib/constants';
 
 const Hero = () => {
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [showPlaceholder, setShowPlaceholder] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  // Generate a placeholder image as base64
-  const generatePlaceholder = () => {
+  // Memoize placeholder generation to avoid recreating on every render
+  const placeholderImage = useMemo(() => {
     const canvas = document.createElement('canvas');
     canvas.width = 1920;
     canvas.height = 1080;
@@ -39,9 +40,7 @@ const Hero = () => {
     }
     
     return canvas.toDataURL('image/jpeg', 0.8);
-  };
-
-  const [placeholderImage] = useState(() => generatePlaceholder());
+  }, []);
 
   const handleVideoLoad = () => {
     setVideoLoaded(true);
@@ -81,7 +80,7 @@ const Hero = () => {
         preload="metadata"
         poster={placeholderImage}
       >
-        <source src="/hero.mp4" type="video/mp4" />
+        <source src={HERO_VIDEO_SOURCE} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 

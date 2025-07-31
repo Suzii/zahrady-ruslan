@@ -7,18 +7,21 @@ const About = () => {
   const { elementRef: contentRef, isVisible: contentVisible } = useScrollAnimation<HTMLDivElement>({ threshold: 0.2 });
 
   return (
-    <section id="uvod" className="py-16 gradient-about relative overflow-hidden">
+    <section id="uvod" className="py-16 gradient-about relative overflow-hidden" aria-labelledby="about-heading">
       {/* Background decorative elements */}
-      <div className="absolute top-0 left-0 w-64 h-64 bg-emerald-200/20 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-green-200/15 rounded-full blur-3xl" />
+      <div className="absolute top-0 left-0 w-64 h-64 bg-emerald-200/20 rounded-full blur-3xl" aria-hidden="true" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-green-200/15 rounded-full blur-3xl" aria-hidden="true" />
       
       <div className="container mx-auto section-padding relative z-10">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12" ref={titleRef}>
-            <h2 className={`text-4xl md:text-5xl font-playfair font-bold text-gradient mb-6 fade-in-up ${titleVisible ? 'animate' : ''}`}>
+            <h2 
+              id="about-heading"
+              className={`text-4xl md:text-5xl font-playfair font-bold text-gradient mb-6 fade-in-up ${titleVisible ? 'animate' : ''}`}
+            >
               O mně
             </h2>
-            <div className={`w-24 h-1 bg-gradient-to-r from-green-700 to-emerald-700 mx-auto rounded-full slide-up ${titleVisible ? 'animate' : ''}`}></div>
+            <div className={`w-24 h-1 bg-gradient-to-r from-green-700 to-emerald-700 mx-auto rounded-full slide-up ${titleVisible ? 'animate' : ''}`} aria-hidden="true"></div>
           </div>
           
           <div className={`fade-in-up ${contentVisible ? 'animate' : ''}`} ref={contentRef}>
@@ -41,7 +44,7 @@ const About = () => {
             {/* Service area badge */}
             <div className="mt-10 flex justify-center">
               <div className={`inline-flex items-center px-6 py-3 bg-gradient-to-r from-green-600 to-emerald-600 rounded-full shadow-lg scale-in ${contentVisible ? 'animate' : ''}`}>
-                <div className="w-3 h-3 bg-white rounded-full mr-3"></div>
+                <div className="w-3 h-3 bg-white rounded-full mr-3" aria-hidden="true"></div>
                 <span className="text-white font-semibold">
                   Obsluhuji oblasti do 30 km od Brna
                 </span>

@@ -3,10 +3,18 @@ import * as React from 'react';
 import { Sprout, TreePine, Droplets, Route, Leaf, Flower2, Square, Layers, Layers2, Grid, Boxes, LucideBoxes, Mountain } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/use-scroll-animation';
 
+interface Service {
+  title: string;
+  description: string;
+  icon: React.ComponentType<{ className?: string }>;
+  gradient: string;
+}
+
 const Services = () => {
   const { elementRef: headerRef, isVisible: headerVisible } = useScrollAnimation<HTMLDivElement>();
   const { elementRef: servicesRef, isVisible: servicesVisible } = useScrollAnimation<HTMLDivElement>({ threshold: 0.1 });
-  const services = [
+  
+  const services: Service[] = React.useMemo(() => [
     {
       title: 'Pokládka trávníku',
       description: 'Profesionální pokládka travních koberců pro dokonalý zelený trávník',
@@ -43,21 +51,24 @@ const Services = () => {
       icon: Flower2,
       gradient: 'from-emerald-600 to-teal-600'
     }
-  ];
+  ], []);
 
   return (
-    <section id="sluzby" className="py-20 gradient-services relative overflow-hidden">
+    <section id="sluzby" className="py-20 gradient-services relative overflow-hidden" aria-labelledby="services-heading">
       {/* Background decorative elements */}
-      <div className="absolute top-20 right-10 w-72 h-72 bg-emerald-100/30 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 left-10 w-96 h-96 bg-green-100/20 rounded-full blur-3xl" />
+      <div className="absolute top-20 right-10 w-72 h-72 bg-emerald-100/30 rounded-full blur-3xl" aria-hidden="true" />
+      <div className="absolute bottom-20 left-10 w-96 h-96 bg-green-100/20 rounded-full blur-3xl" aria-hidden="true" />
       
       <div className="container mx-auto section-padding relative z-10">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16" ref={headerRef}>
-            <h2 className={`text-4xl md:text-5xl font-playfair font-bold text-gradient mb-8 fade-in-up ${headerVisible ? 'animate' : ''}`}>
+            <h2 
+              id="services-heading"
+              className={`text-4xl md:text-5xl font-playfair font-bold text-gradient mb-8 fade-in-up ${headerVisible ? 'animate' : ''}`}
+            >
               Služby
             </h2>
-            <div className={`w-24 h-1 bg-gradient-to-r from-green-700 to-emerald-700 mx-auto mb-8 rounded-full slide-up ${headerVisible ? 'animate' : ''}`}></div>
+            <div className={`w-24 h-1 bg-gradient-to-r from-green-700 to-emerald-700 mx-auto mb-8 rounded-full slide-up ${headerVisible ? 'animate' : ''}`} aria-hidden="true"></div>
             <p className={`text-xl text-gray-700 max-w-2xl mx-auto fade-in-up ${headerVisible ? 'animate' : ''}`}>
               Kompletní spektrum zahradnických služeb pro vytvoření a udržbu vaší vysněné zahrady
             </p>
@@ -74,10 +85,10 @@ const Services = () => {
                   {/* Card with gradient border */}
                   <div className="relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden">
                     {/* Gradient background on hover */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
+                    <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} aria-hidden="true" />
                     
                     {/* Icon with subtle gradient background */}
-                    <div className={`relative w-16 h-16 rounded-2xl bg-gradient-to-br ${service.gradient} mb-6 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                    <div className={`relative w-16 h-16 rounded-2xl bg-gradient-to-br ${service.gradient} mb-6 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`} aria-hidden="true">
                       <IconComponent className="w-8 h-8 text-white" />
                     </div>
                     
@@ -89,7 +100,7 @@ const Services = () => {
                     </p>
                     
                     {/* Subtle border gradient */}
-                    <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-500 -z-10`} />
+                    <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-500 -z-10`} aria-hidden="true" />
                   </div>
                 </div>
               );

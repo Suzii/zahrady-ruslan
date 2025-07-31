@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   Dialog,
   DialogContent,
@@ -7,56 +7,24 @@ import {
 } from '../components/ui/dialog';
 import { ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/use-scroll-animation';
+import { GALLERY_IMAGES } from '../lib/constants';
 
 const Gallery = () => {
   const { elementRef: headerRef, isVisible: headerVisible } = useScrollAnimation<HTMLDivElement>();
   const { elementRef: galleryRef, isVisible: galleryVisible } = useScrollAnimation<HTMLDivElement>({ threshold: 0.1 });
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
 
-  const images = [
-    {
-      url: 'https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      description: 'Travnatá zahrada s nově položeným trávníkem a okrasnými rostlinami',
-      category: 'Trávníky'
-    },
-    {
-      url: 'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      description: 'Moderní zahradní design s vyvýšenými záhony a dekorativními kameny',
-      category: 'Design'
-    },
-    {
-      url: 'https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      description: 'Realizace zahradních chodníčků z přírodního kamene',
-      category: 'Chodníky'
-    },
-    {
-      url: 'https://images.unsplash.com/photo-1518495973542-4542c06a5843?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      description: 'Kompletní zahradní úprava s automatickým zavlažovacím systémem',
-      category: 'Závlaha'
-    },
-    {
-      url: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      description: 'Mlatová cesta s okrasnými keři a sezónním osázením',
-      category: 'Cesty'
-    },
-    {
-      url: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      description: 'Terénní úpravy s výsadbou stromů a tvarovanými záhony',
-      category: 'Výsadba'
-    }
-  ];
-
-  const goToNext = () => {
+  const goToNext = useCallback(() => {
     if (selectedImageIndex !== null) {
-      setSelectedImageIndex((selectedImageIndex + 1) % images.length);
+      setSelectedImageIndex((selectedImageIndex + 1) % GALLERY_IMAGES.length);
     }
-  };
+  }, [selectedImageIndex]);
 
-  const goToPrevious = () => {
+  const goToPrevious = useCallback(() => {
     if (selectedImageIndex !== null) {
-      setSelectedImageIndex(selectedImageIndex === 0 ? images.length - 1 : selectedImageIndex - 1);
+      setSelectedImageIndex(selectedImageIndex === 0 ? GALLERY_IMAGES.length - 1 : selectedImageIndex - 1);
     }
-  };
+  }, [selectedImageIndex]);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -91,28 +59,31 @@ const Gallery = () => {
       document.removeEventListener('keydown', handleKeyDown);
       document.removeEventListener('wheel', handleWheel);
     };
-  }, [selectedImageIndex]);
+  }, [selectedImageIndex, goToNext, goToPrevious]);
 
   return (
-    <section id="galerie" className="py-20 gradient-gallery relative overflow-hidden">
+    <section id="galerie" className="py-20 gradient-gallery relative overflow-hidden" aria-labelledby="gallery-heading">
       {/* Background decorative elements */}
-      <div className="absolute top-20 left-10 w-80 h-80 bg-emerald-100/25 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-green-100/20 rounded-full blur-3xl" />
+      <div className="absolute top-20 left-10 w-80 h-80 bg-emerald-100/25 rounded-full blur-3xl" aria-hidden="true" />
+      <div className="absolute bottom-20 right-10 w-96 h-96 bg-green-100/20 rounded-full blur-3xl" aria-hidden="true" />
       
       <div className="container mx-auto section-padding relative z-10">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16" ref={headerRef}>
-            <h2 className={`text-4xl md:text-5xl font-playfair font-bold text-gradient mb-8 fade-in-up ${headerVisible ? 'animate' : ''}`}>
+            <h2 
+              id="gallery-heading"
+              className={`text-4xl md:text-5xl font-playfair font-bold text-gradient mb-8 fade-in-up ${headerVisible ? 'animate' : ''}`}
+            >
               Galerie
             </h2>
-            <div className={`w-24 h-1 bg-gradient-to-r from-green-700 to-emerald-700 mx-auto mb-8 rounded-full slide-up ${headerVisible ? 'animate' : ''}`}></div>
+            <div className={`w-24 h-1 bg-gradient-to-r from-green-700 to-emerald-700 mx-auto mb-8 rounded-full slide-up ${headerVisible ? 'animate' : ''}`} aria-hidden="true"></div>
             <p className={`text-xl text-gray-700 max-w-2xl mx-auto fade-in-up ${headerVisible ? 'animate' : ''}`}>
               Podívejte se na některé z mých realizovaných projektů
             </p>
           </div>
 
           <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ${galleryVisible ? 'animate' : ''}`} ref={galleryRef}>
-            {images.map((image, index) => (
+            {GALLERY_IMAGES.map((image, index) => (
               <Dialog key={index} open={selectedImageIndex === index} onOpenChange={(open) => !open && setSelectedImageIndex(null)}>
                 <DialogTrigger asChild>
                   <div 
@@ -146,8 +117,8 @@ const Gallery = () => {
                 <DialogContent className="max-w-5xl w-full p-0 bg-transparent border-none">
                   <div className="relative">
                     <img 
-                      src={images[selectedImageIndex || 0].url} 
-                      alt={images[selectedImageIndex || 0].description}
+                      src={GALLERY_IMAGES[selectedImageIndex || 0].url} 
+                      alt={GALLERY_IMAGES[selectedImageIndex || 0].description}
                       className="w-full h-auto max-h-[80vh] object-contain rounded-2xl shadow-2xl"
                     />
                     
@@ -155,6 +126,7 @@ const Gallery = () => {
                     <button
                       onClick={goToPrevious}
                       className="absolute left-4 top-1/2 -translate-y-1/2 glass rounded-full p-4 shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm"
+                      aria-label="Předchozí obrázek"
                     >
                       <ChevronLeft className="w-6 h-6 text-white" />
                     </button>
@@ -162,6 +134,7 @@ const Gallery = () => {
                     <button
                       onClick={goToNext}
                       className="absolute right-4 top-1/2 -translate-y-1/2 glass rounded-full p-4 shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm"
+                      aria-label="Další obrázek"
                     >
                       <ChevronRight className="w-6 h-6 text-white" />
                     </button>
@@ -169,7 +142,7 @@ const Gallery = () => {
                     {/* Image counter */}
                     <div className="absolute top-4 left-1/2 -translate-x-1/2 glass px-4 py-2 rounded-full backdrop-blur-sm">
                       <span className="text-white font-semibold text-sm">
-                        {(selectedImageIndex || 0) + 1} / {images.length}
+                        {(selectedImageIndex || 0) + 1} / {GALLERY_IMAGES.length}
                       </span>
                     </div>
                   </div>
@@ -177,7 +150,7 @@ const Gallery = () => {
                   {/* Image description below image */}
                   <div className="mt-2 max-w-2xl mx-auto">
                     <p className="text-white text-sm font-medium leading-relaxed text-center">
-                      {images[selectedImageIndex || 0].description}
+                      {GALLERY_IMAGES[selectedImageIndex || 0].description}
                     </p>
                   </div>
                 </DialogContent>
