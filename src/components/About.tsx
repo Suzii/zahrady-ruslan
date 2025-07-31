@@ -1,7 +1,11 @@
 
 import React from 'react';
+import { useScrollAnimation } from '../hooks/use-scroll-animation';
 
 const About = () => {
+  const { elementRef: titleRef, isVisible: titleVisible } = useScrollAnimation<HTMLDivElement>();
+  const { elementRef: contentRef, isVisible: contentVisible } = useScrollAnimation<HTMLDivElement>({ threshold: 0.2 });
+
   return (
     <section id="uvod" className="py-16 gradient-about relative overflow-hidden">
       {/* Background decorative elements */}
@@ -10,14 +14,14 @@ const About = () => {
       
       <div className="container mx-auto section-padding relative z-10">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-playfair font-bold text-gradient mb-6 fade-in-up">
+          <div className="text-center mb-12" ref={titleRef}>
+            <h2 className={`text-4xl md:text-5xl font-playfair font-bold text-gradient mb-6 fade-in-up ${titleVisible ? 'animate' : ''}`}>
               O mně
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-green-700 to-emerald-700 mx-auto rounded-full"></div>
+            <div className={`w-24 h-1 bg-gradient-to-r from-green-700 to-emerald-700 mx-auto rounded-full slide-up ${titleVisible ? 'animate' : ''}`}></div>
           </div>
           
-          <div className="fade-in-up">
+          <div className={`fade-in-up ${contentVisible ? 'animate' : ''}`} ref={contentRef}>
             <div className="space-y-6">
               <p className="text-lg md:text-xl text-gray-800 leading-relaxed font-medium">
                 Jmenuji se Ruslan a jsem zkušený zahradník s vášní pro vytváření krásných a funkčních zahrad. 
@@ -36,7 +40,7 @@ const About = () => {
             
             {/* Service area badge */}
             <div className="mt-10 flex justify-center">
-              <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-green-600 to-emerald-600 rounded-full shadow-lg">
+              <div className={`inline-flex items-center px-6 py-3 bg-gradient-to-r from-green-600 to-emerald-600 rounded-full shadow-lg scale-in ${contentVisible ? 'animate' : ''}`}>
                 <div className="w-3 h-3 bg-white rounded-full mr-3"></div>
                 <span className="text-white font-semibold">
                   Obsluhuji oblasti do 30 km od Brna

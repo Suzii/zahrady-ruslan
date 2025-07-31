@@ -1,8 +1,11 @@
 
 import React from 'react';
 import { Phone, Mail, MapPin } from 'lucide-react';
+import { useScrollAnimation } from '../hooks/use-scroll-animation';
 
 const Contact = () => {
+  const { elementRef: headerRef, isVisible: headerVisible } = useScrollAnimation<HTMLDivElement>();
+  const { elementRef: contentRef, isVisible: contentVisible } = useScrollAnimation<HTMLDivElement>({ threshold: 0.1 });
   return (
     <section id="kontakt" className="py-20 gradient-contact relative overflow-hidden">
       {/* Background decorative elements */}
@@ -11,18 +14,18 @@ const Contact = () => {
       
       <div className="container mx-auto section-padding relative z-10">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-playfair font-bold text-gradient mb-8 fade-in-up">
+          <div className="text-center mb-16" ref={headerRef}>
+            <h2 className={`text-4xl md:text-5xl font-playfair font-bold text-gradient mb-8 fade-in-up ${headerVisible ? 'animate' : ''}`}>
               Kontakt
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-green-700 to-emerald-700 mx-auto mb-8 rounded-full"></div>
-            <p className="text-xl text-gray-700 max-w-2xl mx-auto fade-in-up">
+            <div className={`w-24 h-1 bg-gradient-to-r from-green-700 to-emerald-700 mx-auto mb-8 rounded-full slide-up ${headerVisible ? 'animate' : ''}`}></div>
+            <p className={`text-xl text-gray-700 max-w-2xl mx-auto fade-in-up ${headerVisible ? 'animate' : ''}`}>
               Pojďme společně vytvořit vaši vysněnou zahradu
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            <div className="space-y-8 fade-in-up">
+          <div className={`grid lg:grid-cols-2 gap-12 items-start ${contentVisible ? 'animate' : ''}`} ref={contentRef}>
+            <div className={`space-y-8 fade-in-left ${contentVisible ? 'animate' : ''}`}>
               <div className="card-gradient rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
                 <h3 className="text-2xl font-playfair font-semibold text-gradient mb-8">
                   Spojte se se mnou
@@ -77,7 +80,7 @@ const Contact = () => {
               </div>
             </div>
 
-            <div className="fade-in-up">
+            <div className={`fade-in-right ${contentVisible ? 'animate' : ''}`}>
               <div className="card-gradient rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
                 <h3 className="text-2xl font-playfair font-semibold text-gradient mb-8">
                   Oblast působnosti

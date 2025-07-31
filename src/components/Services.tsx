@@ -1,8 +1,11 @@
 
 import * as React from 'react';
 import { Sprout, TreePine, Droplets, Route, Leaf, Flower2, Square, Layers, Layers2, Grid, Boxes, LucideBoxes, Mountain } from 'lucide-react';
+import { useScrollAnimation } from '../hooks/use-scroll-animation';
 
 const Services = () => {
+  const { elementRef: headerRef, isVisible: headerVisible } = useScrollAnimation<HTMLDivElement>();
+  const { elementRef: servicesRef, isVisible: servicesVisible } = useScrollAnimation<HTMLDivElement>({ threshold: 0.1 });
   const services = [
     {
       title: 'Pokládka trávníku',
@@ -50,24 +53,23 @@ const Services = () => {
       
       <div className="container mx-auto section-padding relative z-10">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-playfair font-bold text-gradient mb-8 fade-in-up">
+          <div className="text-center mb-16" ref={headerRef}>
+            <h2 className={`text-4xl md:text-5xl font-playfair font-bold text-gradient mb-8 fade-in-up ${headerVisible ? 'animate' : ''}`}>
               Služby
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-green-700 to-emerald-700 mx-auto mb-8 rounded-full"></div>
-            <p className="text-xl text-gray-700 max-w-2xl mx-auto fade-in-up">
+            <div className={`w-24 h-1 bg-gradient-to-r from-green-700 to-emerald-700 mx-auto mb-8 rounded-full slide-up ${headerVisible ? 'animate' : ''}`}></div>
+            <p className={`text-xl text-gray-700 max-w-2xl mx-auto fade-in-up ${headerVisible ? 'animate' : ''}`}>
               Kompletní spektrum zahradnických služeb pro vytvoření a udržbu vaší vysněné zahrady
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className={`grid md:grid-cols-2 lg:grid-cols-3 gap-8 ${servicesVisible ? 'animate' : ''}`} ref={servicesRef}>
             {services.map((service, index) => {
               const IconComponent = service.icon;
               return (
                 <div 
                   key={index}
-                  className="group relative fade-in-up"
-                  style={{ animationDelay: `${index * 0.1}s` }}
+                  className={`group relative stagger-item ${servicesVisible ? 'animate' : ''}`}
                 >
                   {/* Card with gradient border */}
                   <div className="relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden">

@@ -6,8 +6,11 @@ import {
   DialogTrigger,
 } from '../components/ui/dialog';
 import { ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react';
+import { useScrollAnimation } from '../hooks/use-scroll-animation';
 
 const Gallery = () => {
+  const { elementRef: headerRef, isVisible: headerVisible } = useScrollAnimation<HTMLDivElement>();
+  const { elementRef: galleryRef, isVisible: galleryVisible } = useScrollAnimation<HTMLDivElement>({ threshold: 0.1 });
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
 
   const images = [
@@ -98,23 +101,22 @@ const Gallery = () => {
       
       <div className="container mx-auto section-padding relative z-10">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-playfair font-bold text-gradient mb-8 fade-in-up">
+          <div className="text-center mb-16" ref={headerRef}>
+            <h2 className={`text-4xl md:text-5xl font-playfair font-bold text-gradient mb-8 fade-in-up ${headerVisible ? 'animate' : ''}`}>
               Galerie
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-green-700 to-emerald-700 mx-auto mb-8 rounded-full"></div>
-            <p className="text-xl text-gray-700 max-w-2xl mx-auto fade-in-up">
+            <div className={`w-24 h-1 bg-gradient-to-r from-green-700 to-emerald-700 mx-auto mb-8 rounded-full slide-up ${headerVisible ? 'animate' : ''}`}></div>
+            <p className={`text-xl text-gray-700 max-w-2xl mx-auto fade-in-up ${headerVisible ? 'animate' : ''}`}>
               Podívejte se na některé z mých realizovaných projektů
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ${galleryVisible ? 'animate' : ''}`} ref={galleryRef}>
             {images.map((image, index) => (
               <Dialog key={index} open={selectedImageIndex === index} onOpenChange={(open) => !open && setSelectedImageIndex(null)}>
                 <DialogTrigger asChild>
                   <div 
-                    className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 aspect-square fade-in-up cursor-pointer hover:-translate-y-2"
-                    style={{ animationDelay: `${index * 0.1}s` }}
+                    className={`group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 aspect-square stagger-item cursor-pointer hover:-translate-y-2 ${galleryVisible ? 'animate' : ''}`}
                     onClick={() => setSelectedImageIndex(index)}
                   >
                     <div 
