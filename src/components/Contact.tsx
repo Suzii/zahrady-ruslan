@@ -9,7 +9,7 @@ const Contact = () => {
   const { elementRef: contentRef, isVisible: contentVisible } = useScrollAnimation<HTMLDivElement>({ threshold: 0.1 });
   
   return (
-    <section id="kontakt" className="py-20 gradient-contact relative overflow-hidden" aria-labelledby="contact-heading">
+    <section id="kontakt" className="py-20 gradient-contact relative overflow-hidden" aria-labelledby="contact-heading" itemScope itemType="https://schema.org/ContactPage">
       {/* Background decorative elements */}
       <div className="absolute top-10 left-20 w-80 h-80 bg-emerald-100/30 rounded-full blur-3xl" aria-hidden="true" />
       <div className="absolute bottom-10 right-20 w-64 h-64 bg-green-100/25 rounded-full blur-3xl" aria-hidden="true" />
@@ -33,7 +33,7 @@ const Contact = () => {
             {/* Contact & Service Area */}
             <div className="grid lg:grid-cols-2 gap-6">
               {/* Contact Information */}
-              <div className={`bg-white rounded-2xl p-6 shadow-lg border border-gray-100 fade-in-left ${contentVisible ? 'animate' : ''}`}>
+              <div className={`bg-white rounded-2xl p-6 shadow-lg border border-gray-100 fade-in-left ${contentVisible ? 'animate' : ''}`} itemScope itemType="https://schema.org/ContactPoint">
                 <h3 className="text-xl font-playfair font-semibold text-gradient mb-6">Kontakt</h3>
                 
                 <div className="space-y-4">
@@ -48,6 +48,7 @@ const Contact = () => {
                         href={`tel:${CONTACT_INFO.phone}`}
                         className="text-xl font-bold text-gradient hover:scale-105 transition-transform duration-300"
                         aria-label={`Zavolejte na ${CONTACT_INFO.phone}`}
+                        itemProp="telephone"
                       >
                         {CONTACT_INFO.phone}
                       </a>
@@ -65,6 +66,7 @@ const Contact = () => {
                         href={`mailto:${CONTACT_INFO.email}`}
                         className="text-lg font-semibold text-gradient hover:scale-105 transition-transform duration-300"
                         aria-label={`Napište email na ${CONTACT_INFO.email}`}
+                        itemProp="email"
                       >
                         {CONTACT_INFO.email}
                       </a>
@@ -78,7 +80,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <p className="text-sm text-gray-500 font-medium">Lokalita</p>
-                      <span className="text-lg font-semibold text-gradient">{CONTACT_INFO.location}</span>
+                      <span className="text-lg font-semibold text-gradient" itemProp="addressLocality">{CONTACT_INFO.location}</span>
                     </div>
                   </div>
                 </div>

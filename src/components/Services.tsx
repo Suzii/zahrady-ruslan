@@ -54,7 +54,7 @@ const Services = () => {
   ], []);
 
   return (
-    <section id="sluzby" className="py-20 gradient-services relative overflow-hidden" aria-labelledby="services-heading">
+    <section id="sluzby" className="py-20 gradient-services relative overflow-hidden" aria-labelledby="services-heading" itemScope itemType="https://schema.org/Service">
       {/* Background decorative elements */}
       <div className="absolute top-20 right-10 w-72 h-72 bg-emerald-100/30 rounded-full blur-3xl" aria-hidden="true" />
       <div className="absolute bottom-20 left-10 w-96 h-96 bg-green-100/20 rounded-full blur-3xl" aria-hidden="true" />
@@ -78,9 +78,11 @@ const Services = () => {
             {services.map((service, index) => {
               const IconComponent = service.icon;
               return (
-                <div 
+                 <article 
                   key={index}
                   className={`group relative stagger-item ${servicesVisible ? 'animate' : ''}`}
+                  itemScope 
+                  itemType="https://schema.org/Service"
                 >
                   {/* Card with gradient border */}
                   <div className="relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden">
@@ -92,17 +94,17 @@ const Services = () => {
                       <IconComponent className="w-8 h-8 text-white" />
                     </div>
                     
-                    <h3 className="relative text-xl font-playfair font-semibold text-gray-800 mb-4 group-hover:text-gray-900 transition-colors">
+                    <h3 className="relative text-xl font-playfair font-semibold text-gray-800 mb-4 group-hover:text-gray-900 transition-colors" itemProp="name">
                       {service.title}
                     </h3>
-                    <p className="relative text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors">
+                    <p className="relative text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors" itemProp="description">
                       {service.description}
                     </p>
                     
                     {/* Subtle border gradient */}
                     <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-500 -z-10`} aria-hidden="true" />
                   </div>
-                </div>
+                </article>
               );
             })}
           </div>

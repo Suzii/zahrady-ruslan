@@ -7,7 +7,7 @@ const About = () => {
   const { elementRef: contentRef, isVisible: contentVisible } = useScrollAnimation<HTMLDivElement>({ threshold: 0.2 });
 
   return (
-    <section id="uvod" className="py-16 gradient-about relative overflow-hidden" aria-labelledby="about-heading">
+    <section id="uvod" className="py-16 gradient-about relative overflow-hidden" aria-labelledby="about-heading" itemScope itemType="https://schema.org/AboutPage">
       {/* Background decorative elements */}
       <div className="absolute top-0 left-0 w-64 h-64 bg-emerald-200/20 rounded-full blur-3xl" aria-hidden="true" />
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-green-200/15 rounded-full blur-3xl" aria-hidden="true" />
@@ -26,14 +26,14 @@ const About = () => {
           
           <div className={`fade-in-up ${contentVisible ? 'animate' : ''}`} ref={contentRef}>
             <div className="space-y-6">
-              <p className="text-lg md:text-xl text-gray-800 leading-relaxed font-medium">
-                Jmenuji se Ruslan a jsem zkušený zahradník s vášní pro vytváření krásných a funkčních zahrad. 
-                Specializuji se na kompletní realizace zahradních projektů od základních úprav až po složité designové prvky, 
-                stejně jako na pravidelnou údržbu zahrad včetně stříhání stromů, keřů a péče o trávník.
+              <p className="text-lg md:text-xl text-gray-800 leading-relaxed font-medium" itemProp="description">
+                Jmenuji se <span itemProp="name">Ruslan</span> a jsem <strong>zkušený zahradník s vášní pro vytváření krásných a funkčních zahrad</strong>. 
+                Specializuji se na <strong>kompletní realizace zahradních projektů</strong> od základních úprav až po složité designové prvky, 
+                stejně jako na <strong>pravidelnou údržbu zahrad</strong> včetně stříhání stromů, keřů a péče o trávník.
               </p>
               <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
-                Mezi mé služby patří pokládka trávníků, instalace závlahových systémů, výsadba květin, stromů a keřů, 
-                budování chodníčků, suchých zídek, skalky, záhonů i konstrukce vyvýšených záhonů na míru.
+                Mezi mé <strong>zahradnické služby</strong> patří <strong>pokládka trávníků</strong>, instalace <strong>závlahových systémů</strong>, <strong>výsadba květin, stromů a keřů</strong>, 
+                budování <strong>chodníčků</strong>, <strong>suchých zídek</strong>, <strong>skalky</strong>, záhonů i konstrukce <strong>vyvýšených záhonů na míru</strong>.
               </p>
               <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
                 Vždy naslouchám přáním zákazníka a poskytuji odborné rady. Společně transformujeme vaše představy 
