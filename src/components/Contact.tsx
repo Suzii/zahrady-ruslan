@@ -24,118 +24,113 @@ const Contact = () => {
             </p>
           </div>
 
-          <div className={`grid lg:grid-cols-2 gap-12 items-start ${contentVisible ? 'animate' : ''}`} ref={contentRef}>
-            <div className={`space-y-8 fade-in-left ${contentVisible ? 'animate' : ''}`}>
-              <div className="card-gradient rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
-                <h3 className="text-2xl font-playfair font-semibold text-gradient mb-8">
-                  Spojte se se mnou
-                </h3>
+          <div className={`space-y-12 ${contentVisible ? 'animate' : ''}`} ref={contentRef}>
+            {/* Benefits Row - Three Columns */}
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className={`text-center fade-in-left ${contentVisible ? 'animate' : ''}`}>
+                <div className="w-12 h-12 bg-gradient-to-br from-green-600 to-emerald-600 rounded-xl flex items-center justify-center mb-3 mx-auto shadow-md">
+                  <div className="w-4 h-4 bg-white rounded-full"></div>
+                </div>
+                <h3 className="text-xl font-playfair font-semibold text-gradient mb-3">Bezplatná konzultace</h3>
+                <p className="text-gray-600 leading-relaxed">První setkání a konzultace řešení zdarma. Společně probereme vaše představy a možnosti.</p>
+              </div>
+
+              <div className={`text-center fade-in-up ${contentVisible ? 'animate' : ''}`}>
+                <div className="w-12 h-12 bg-gradient-to-br from-teal-600 to-cyan-600 rounded-xl flex items-center justify-center mb-3 mx-auto shadow-md">
+                  <div className="w-4 h-4 bg-white rounded-full"></div>
+                </div>
+                <h3 className="text-xl font-playfair font-semibold text-gradient mb-3">Kompletní služby</h3>
+                <p className="text-gray-600 leading-relaxed">Od založení až po údržbu zahrady. Poskytuji kompletní zahradnické služby.</p>
+              </div>
+
+              <div className={`text-center fade-in-right ${contentVisible ? 'animate' : ''}`}>
+                <div className="w-12 h-12 bg-gradient-to-br from-emerald-600 to-green-600 rounded-xl flex items-center justify-center mb-3 mx-auto shadow-md">
+                  <div className="w-4 h-4 bg-white rounded-full"></div>
+                </div>
+                <h3 className="text-xl font-playfair font-semibold text-gradient mb-3">Garance kvality</h3>
+                <p className="text-gray-600 leading-relaxed">Spokojenost zákazníků je prioritou. Každý projekt dokončuji s maximální péčí.</p>
+              </div>
+            </div>
+
+            {/* Contact & Service Area */}
+            <div className="grid lg:grid-cols-2 gap-6">
+              {/* Contact Information */}
+              <div className={`bg-white rounded-2xl p-6 shadow-lg border border-gray-100 fade-in-left ${contentVisible ? 'animate' : ''}`}>
+                <h3 className="text-xl font-playfair font-semibold text-gradient mb-6">Kontakt</h3>
                 
-                <div className="space-y-6">
-                  <div className="flex items-center space-x-4 group">
-                    <div className="w-14 h-14 bg-gradient-to-br from-green-700 to-emerald-700 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                      <Phone className="w-6 h-6 text-white" />
+                <div className="space-y-4">
+                  {/* Phone */}
+                  <div className="flex items-center space-x-3 group">
+                    <div className="w-10 h-10 bg-gradient-to-br from-green-600 to-emerald-600 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                      <Phone className="w-5 h-5 text-white" />
                     </div>
                     <div>
                       <p className="text-sm text-gray-500 font-medium">Telefon</p>
-                      <a href="tel:+420123456789" className="text-lg font-semibold text-gray-800 hover:text-green-700 transition-colors">
+                      <a href="tel:+420123456789" className="text-xl font-bold text-gradient hover:scale-105 transition-transform duration-300">
                         +420 123 456 789
                       </a>
                     </div>
                   </div>
-                  
-                  <div className="flex items-center space-x-4 group">
-                    <div className="w-14 h-14 bg-gradient-to-br from-green-700 to-emerald-700 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                      <Mail className="w-6 h-6 text-white" />
+
+                  {/* Email */}
+                  <div className="flex items-center space-x-3 group">
+                    <div className="w-10 h-10 bg-gradient-to-br from-teal-600 to-cyan-600 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                      <Mail className="w-5 h-5 text-white" />
                     </div>
                     <div>
                       <p className="text-sm text-gray-500 font-medium">Email</p>
-                      <a href="mailto:ruslan@zahradnik.cz" className="text-lg font-semibold text-gray-800 hover:text-green-700 transition-colors">
+                      <a href="mailto:ruslan@zahradnik.cz" className="text-lg font-semibold text-gradient hover:scale-105 transition-transform duration-300">
                         ruslan@zahradnik.cz
                       </a>
                     </div>
                   </div>
 
-                  <div className="flex items-center space-x-4 group">
-                    <div className="w-14 h-14 bg-gradient-to-br from-green-700 to-emerald-700 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                      <MapPin className="w-6 h-6 text-white" />
+                  {/* Location */}
+                  <div className="flex items-center space-x-3 group">
+                    <div className="w-10 h-10 bg-gradient-to-br from-emerald-600 to-green-600 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                      <MapPin className="w-5 h-5 text-white" />
                     </div>
                     <div>
                       <p className="text-sm text-gray-500 font-medium">Lokalita</p>
-                      <span className="text-lg font-semibold text-gray-800">
-                        Brno a okolí
-                      </span>
+                      <span className="text-lg font-semibold text-gradient">Brno a okolí</span>
                     </div>
                   </div>
                 </div>
-
-                <div className="mt-8 pt-6 border-t border-gray-200">
-                  <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-green-100 to-emerald-100 rounded-full border border-green-200">
-                    <div className="w-2 h-2 bg-green-700 rounded-full mr-2"></div>
-                    <span className="text-green-800 font-semibold text-sm">
-                      Obsluhuji oblasti do 30 km od Brna
-                    </span>
-                  </div>
-                </div>
               </div>
-            </div>
 
-            <div className={`fade-in-right ${contentVisible ? 'animate' : ''}`}>
-              <div className="card-gradient rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
-                <h3 className="text-2xl font-playfair font-semibold text-gradient mb-8">
-                  Oblast působnosti
-                </h3>
+              {/* Service Area Map */}
+              <div className={`bg-white rounded-2xl p-6 shadow-lg border border-gray-100 fade-in-right ${contentVisible ? 'animate' : ''}`}>
+                <h3 className="text-xl font-playfair font-semibold text-gradient mb-4">Oblast působnosti</h3>
                 
-                {/* Enhanced map placeholder */}
-                <div className="relative w-full h-80 bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl overflow-hidden border border-green-100">
+                <div className="relative w-full h-48 bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl overflow-hidden border border-green-100">
                   <div 
-                    className="w-full h-full bg-cover bg-center opacity-80"
+                    className="w-full h-full bg-cover bg-center opacity-60"
                     style={{
                       backgroundImage: `url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')`
                     }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-br from-green-900/10 to-emerald-900/10" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-green-900/5 to-emerald-900/5" />
                   
                   {/* Brno marker */}
                   <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                     <div className="relative">
-                      <div className="w-8 h-8 bg-gradient-to-br from-green-700 to-emerald-700 rounded-full border-4 border-white shadow-lg animate-pulse"></div>
-                      <div className="absolute top-10 left-1/2 transform -translate-x-1/2 bg-white px-4 py-2 rounded-full shadow-lg border border-green-200">
-                        <span className="text-sm font-semibold text-green-800">Brno</span>
+                      <div className="w-5 h-5 bg-gradient-to-br from-green-700 to-emerald-700 rounded-full border-2 border-white shadow-lg animate-pulse"></div>
+                      <div className="absolute top-6 left-1/2 transform -translate-x-1/2 bg-white px-2 py-1 rounded-full shadow-lg border border-green-200">
+                        <span className="text-xs font-semibold text-green-800">Brno</span>
                       </div>
                     </div>
                     
                     {/* 30km radius circle */}
-                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 border-2 border-green-400/50 rounded-full animate-pulse"></div>
-                  </div>
-                  
-                  {/* Service area info */}
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <div className="glass rounded-xl p-4 backdrop-blur-sm">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <p className="text-sm text-green-800 font-semibold">Dosah služeb</p>
-                          <p className="text-xs text-green-700">30 km od Brna</p>
-                        </div>
-                        <div className="w-3 h-3 bg-green-700 rounded-full animate-pulse"></div>
-                      </div>
-                    </div>
+                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 border-2 border-green-400/40 rounded-full animate-pulse"></div>
                   </div>
                 </div>
 
-                {/* Additional info */}
-                <div className="mt-6 space-y-3">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-green-700 rounded-full"></div>
-                    <span className="text-sm text-gray-600">Bezplatná konzultace</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-green-700 rounded-full"></div>
-                    <span className="text-sm text-gray-600">Flexibilní termíny</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-green-700 rounded-full"></div>
-                    <span className="text-sm text-gray-600">Garance kvality</span>
+                <div className="mt-4 flex items-center justify-center">
+                  <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-green-100 to-emerald-100 rounded-full border border-green-200">
+                    <div className="w-2 h-2 bg-green-700 rounded-full mr-2 animate-pulse"></div>
+                    <span className="text-green-800 font-semibold text-sm">
+                      Obsluhuji oblasti do 30 km od Brna
+                    </span>
                   </div>
                 </div>
               </div>
