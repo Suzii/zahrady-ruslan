@@ -11,14 +11,14 @@ const Footer = () => {
       <div className="absolute bottom-10 left-10 w-24 h-24 bg-emerald-400/10 rounded-full blur-xl" />
       
       <div className="container mx-auto section-padding relative z-10">
-        <div className="grid md:grid-cols-3 gap-12 items-start">
+        <div className="grid md:grid-cols-2 gap-12 items-start">
           {/* Company info */}
           <div className="text-center md:text-left">
             <div className="flex items-center justify-center md:justify-start mb-6">
               <div className="w-12 h-12 bg-gradient-to-br from-emerald-400 to-green-500 rounded-2xl flex items-center justify-center mr-4 shadow-lg">
                 <Leaf className="w-6 h-6 text-white" />
               </div>
-              <h3 className="text-3xl font-playfair font-bold">Ruslan</h3>
+              <h3 className="text-3xl font-playfair font-bold">Zahrady Ruslan</h3>
             </div>
             <p className="text-emerald-100 mb-6 leading-relaxed">
               Kompletní realizace zahrad s láskou k detailu a profesionálním přístupem
@@ -32,7 +32,6 @@ const Footer = () => {
           
           {/* Contact info */}
           <div className="text-center">
-            <h4 className="text-xl font-playfair font-semibold mb-6">Kontakt</h4>
             <div className="space-y-4">
               <div className="flex items-center justify-center space-x-3">
                 <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-sm">
@@ -60,32 +59,14 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          
-          {/* Services */}
-          <div className="text-center md:text-right">
-            <h4 className="text-xl font-playfair font-semibold mb-6">Služby</h4>
-            <div className="space-y-2 text-emerald-100">
-              <p className="hover:text-white transition-colors cursor-pointer">Pokládka trávníku</p>
-              <p className="hover:text-white transition-colors cursor-pointer">Sázení rostlin</p>
-              <p className="hover:text-white transition-colors cursor-pointer">Závlahové systémy</p>
-              <p className="hover:text-white transition-colors cursor-pointer">Zahradní chodníky</p>
-              <p className="hover:text-white transition-colors cursor-pointer">Vyvýšené záhony</p>
-            </div>
-          </div>
         </div>
         
         {/* Bottom section */}
         <div className="mt-12 pt-8 border-t border-white/20">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+          <div className="flex justify-center items-center">
             <p className="text-emerald-100 text-sm">
-              © 2024 Ruslan - Zahradnické služby. Všechna práva vyhrazena.
+              © {new Date().getFullYear()} Ruslan - Zahradnické služby
             </p>
-            <div className="flex items-center space-x-2">
-              <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-              <span className="text-emerald-100 text-sm font-medium">
-                Obsluhuji oblasti do 30 km od Brna
-              </span>
-            </div>
           </div>
         </div>
       </div>
