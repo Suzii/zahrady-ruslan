@@ -25,33 +25,6 @@ const Contact = () => {
           </div>
 
           <div className={`space-y-12 ${contentVisible ? 'animate' : ''}`} ref={contentRef}>
-            {/* Benefits Row - Three Columns */}
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className={`text-center fade-in-left ${contentVisible ? 'animate' : ''}`}>
-                <div className="w-12 h-12 bg-gradient-to-br from-green-600 to-emerald-600 rounded-xl flex items-center justify-center mb-3 mx-auto shadow-md">
-                  <div className="w-4 h-4 bg-white rounded-full"></div>
-                </div>
-                <h3 className="text-xl font-playfair font-semibold text-gradient mb-3">Bezplatná konzultace</h3>
-                <p className="text-gray-600 leading-relaxed">První setkání a konzultace řešení zdarma. Společně probereme vaše představy a možnosti.</p>
-              </div>
-
-              <div className={`text-center fade-in-up ${contentVisible ? 'animate' : ''}`}>
-                <div className="w-12 h-12 bg-gradient-to-br from-teal-600 to-cyan-600 rounded-xl flex items-center justify-center mb-3 mx-auto shadow-md">
-                  <div className="w-4 h-4 bg-white rounded-full"></div>
-                </div>
-                <h3 className="text-xl font-playfair font-semibold text-gradient mb-3">Kompletní služby</h3>
-                <p className="text-gray-600 leading-relaxed">Od založení až po údržbu zahrady. Poskytuji kompletní zahradnické služby.</p>
-              </div>
-
-              <div className={`text-center fade-in-right ${contentVisible ? 'animate' : ''}`}>
-                <div className="w-12 h-12 bg-gradient-to-br from-emerald-600 to-green-600 rounded-xl flex items-center justify-center mb-3 mx-auto shadow-md">
-                  <div className="w-4 h-4 bg-white rounded-full"></div>
-                </div>
-                <h3 className="text-xl font-playfair font-semibold text-gradient mb-3">Garance kvality</h3>
-                <p className="text-gray-600 leading-relaxed">Spokojenost zákazníků je prioritou. Každý projekt dokončuji s maximální péčí.</p>
-              </div>
-            </div>
-
             {/* Contact & Service Area */}
             <div className="grid lg:grid-cols-2 gap-6">
               {/* Contact Information */}
