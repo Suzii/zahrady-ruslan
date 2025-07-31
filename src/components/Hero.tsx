@@ -97,11 +97,11 @@ const Hero = () => {
         />
       )}
       
-      {/* Modern Gradient Overlay with darker greens */}
-      <div className="absolute inset-0 bg-gradient-to-br from-green-950/50 via-emerald-900/40 to-teal-900/50" />
+      {/* Modern Gradient Overlay with medium greens */}
+      <div className="absolute inset-0 bg-gradient-to-br from-green-950/40 via-emerald-900/35 to-teal-900/40" />
       
       {/* Additional subtle overlay for depth */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent" />
       
       {/* Content */}
       <div className="relative h-full flex items-center justify-center text-center z-10">
