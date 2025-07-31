@@ -53,7 +53,7 @@ const Navigation = () => {
             <span className={`text-2xl font-playfair font-bold transition-colors duration-300 ${
               isScrolled ? 'text-gray-800' : 'text-white'
             }`}>
-              Ruslan
+              Zahrady Ruslan
             </span>
           </div>
 
