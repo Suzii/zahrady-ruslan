@@ -117,10 +117,11 @@ const Gallery = () => {
                 <DialogTrigger asChild>
                   <div 
                     className={`group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 aspect-square stagger-item cursor-pointer hover:-translate-y-2 ${galleryVisible ? 'animate' : ''}`}
+                    style={{ transform: 'translateZ(0)' }}
                     onClick={() => setSelectedImageIndex(index)}
                   >
                     <div 
-                      className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                      className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110 rounded-2xl"
                       style={{ backgroundImage: `url('${image.url}')` }}
                     />
                     
@@ -130,9 +131,6 @@ const Gallery = () => {
                     {/* Content overlay */}
                     <div className="absolute inset-0 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
                       <div className="glass rounded-xl p-4 backdrop-blur-sm">
-                        <div className="inline-flex items-center px-3 py-1 bg-gradient-to-r from-green-700 to-emerald-700 rounded-full mb-3">
-                          <span className="text-white text-xs font-semibold">{image.category}</span>
-                        </div>
                         <p className="text-white text-sm font-medium leading-relaxed">
                           {image.description}
                         </p>
@@ -174,16 +172,13 @@ const Gallery = () => {
                         {(selectedImageIndex || 0) + 1} / {images.length}
                       </span>
                     </div>
-
-                    {/* Image description */}
-                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 glass px-6 py-4 rounded-2xl backdrop-blur-sm max-w-lg mx-4">
-                      <div className="inline-flex items-center px-3 py-1 bg-gradient-to-r from-green-700 to-emerald-700 rounded-full mb-2">
-                        <span className="text-white text-xs font-semibold">{images[selectedImageIndex || 0].category}</span>
-                      </div>
-                      <p className="text-white text-sm font-medium leading-relaxed">
-                        {images[selectedImageIndex || 0].description}
-                      </p>
-                    </div>
+                  </div>
+                  
+                  {/* Image description below image */}
+                  <div className="mt-2 max-w-2xl mx-auto">
+                    <p className="text-white text-sm font-medium leading-relaxed text-center">
+                      {images[selectedImageIndex || 0].description}
+                    </p>
                   </div>
                 </DialogContent>
               </Dialog>

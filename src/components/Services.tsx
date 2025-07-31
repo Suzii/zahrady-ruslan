@@ -26,7 +26,7 @@ const Services = () => {
       gradient: 'from-emerald-700 to-teal-700'
     },
     {
-      title: 'Chodníčy',
+      title: 'Chodníčky',
       description: 'Vytváření zahradních stezek a nášlapů, sterku nebo mlatových cest',
       icon: Route,
       gradient: 'from-slate-600 to-gray-600'
@@ -72,7 +72,7 @@ const Services = () => {
                   className={`group relative stagger-item ${servicesVisible ? 'animate' : ''}`}
                 >
                   {/* Card with gradient border */}
-                  <div className="relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden">
+                  <div className="relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden">
                     {/* Gradient background on hover */}
                     <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
                     
