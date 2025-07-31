@@ -19,8 +19,7 @@ const Navigation = () => {
   const navItems = [
     { href: '#uvod', label: 'Úvod' },
     { href: '#sluzby', label: 'Služby' },
-    { href: '#galerie', label: 'Galerie' },
-    { href: '#kontakt', label: 'Kontakt' }
+    { href: '#galerie', label: 'Galerie' }
   ];
 
   const scrollToSection = (href: string) => {
@@ -57,8 +56,8 @@ const Navigation = () => {
             </span>
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
+          {/* Desktop Navigation - Centered */}
+          <div className="hidden md:flex space-x-8 absolute left-1/2 transform -translate-x-1/2">
             {navItems.map((item) => (
               <button
                 key={item.href}
@@ -82,8 +81,8 @@ const Navigation = () => {
             <Button 
               className={`transition-all duration-300 hover:scale-105 ${
                 isScrolled 
-                  ? 'btn-primary-gradient' 
-                  : 'glass text-white border-white/20 hover:bg-white/30'
+                  ? 'bg-gradient-to-r from-green-700 to-emerald-700 text-white hover:from-green-800 hover:to-emerald-800 shadow-lg' 
+                  : 'bg-white/20 backdrop-blur-sm text-white border border-white/30 hover:bg-white/30'
               }`}
               onClick={() => scrollToSection('#kontakt')}
             >
@@ -92,11 +91,11 @@ const Navigation = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <Button
-            variant="ghost"
-            size="sm"
-            className={`md:hidden transition-all duration-300 ${
-              isScrolled ? 'text-gray-600' : 'text-white'
+          <button
+            className={`md:hidden transition-all duration-300 p-2 rounded-lg ${
+              isScrolled 
+                ? 'text-gray-600 hover:bg-gray-100' 
+                : 'text-white hover:bg-white/20'
             }`}
             onClick={() => setIsOpen(!isOpen)}
           >
@@ -111,25 +110,25 @@ const Navigation = () => {
                 isScrolled ? 'bg-gray-600' : 'bg-white'
               } ${isOpen ? '-rotate-45 -translate-y-1.5' : ''}`} />
             </div>
-          </Button>
+          </button>
         </div>
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden mt-4 glass rounded-2xl p-6 shadow-2xl backdrop-blur-md border border-white/20">
+          <div className="md:hidden mt-4 bg-white/95 backdrop-blur-md rounded-2xl p-6 shadow-2xl border border-gray-200">
             <div className="space-y-2">
               {navItems.map((item) => (
                 <button
                   key={item.href}
                   onClick={() => scrollToSection(item.href)}
-                  className="block w-full text-left py-3 px-4 text-white hover:text-green-300 transition-colors duration-200 font-medium rounded-lg hover:bg-white/10"
+                  className="block w-full text-left py-3 px-4 text-gray-800 hover:text-green-700 transition-colors duration-200 font-medium rounded-lg hover:bg-green-50"
                 >
                   {item.label}
                 </button>
               ))}
               <div className="pt-2">
                 <Button 
-                  className="w-full btn-primary-gradient"
+                  className="w-full bg-gradient-to-r from-green-700 to-emerald-700 text-white hover:from-green-800 hover:to-emerald-800 shadow-lg"
                   onClick={() => scrollToSection('#kontakt')}
                 >
                   Kontakt
