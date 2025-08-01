@@ -2,27 +2,19 @@ import React, { useState, useRef, useEffect } from 'react';
 import { HERO_VIDEO_SOURCE, HERO_PLACEHOLDER_IMAGE } from '../lib/constants';
 
 const Hero = () => {
-  const [videoLoaded, setVideoLoaded] = useState(false);
   const [showPlaceholder, setShowPlaceholder] = useState(true);
-  const [imageLoaded, setImageLoaded] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   // Use static image as placeholder instead of canvas generation
   const placeholderImage = HERO_PLACEHOLDER_IMAGE;
 
   const handleVideoLoad = () => {
-    setVideoLoaded(true);
-    // Keep placeholder visible until video is fully visible
-    setTimeout(() => setShowPlaceholder(false), 200);
+    setShowPlaceholder(false);
   };
 
   const handleVideoError = () => {
     console.warn('Video failed to load, keeping placeholder');
     setShowPlaceholder(true);
-  };
-
-  const handleImageLoad = () => {
-    setImageLoaded(true);
   };
 
   useEffect(() => {
@@ -40,12 +32,20 @@ const Hero = () => {
 
   return (
     <section className="relative h-screen overflow-hidden">
+      {/* Placeholder Background Image */}
+      {showPlaceholder && (
+          <div
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000"
+              style={{
+                backgroundImage: `url('${placeholderImage}')`
+              }}
+          />
+      )}
+
       {/* Background Video */}
       <video
         ref={videoRef}
-        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-          videoLoaded ? 'opacity-100' : 'opacity-0'
-        }`}
+        className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000"
         autoPlay
         muted
         loop
@@ -57,28 +57,9 @@ const Hero = () => {
         Your browser does not support the video tag.
       </video>
 
-      {/* Placeholder Background Image */}
-      {showPlaceholder && (
-        <div 
-          className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ${
-            videoLoaded ? 'opacity-0' : 'opacity-100'
-          }`}
-          style={{
-            backgroundImage: `url('${placeholderImage}')`
-          }}
-          onLoad={handleImageLoad}
-        />
-      )}
-      
-      {/* Modern Gradient Overlay with medium greens - only show when we have a background */}
-      {(imageLoaded || videoLoaded) && (
-        <div className="absolute inset-0 bg-gradient-to-br from-green-950/40 via-emerald-900/35 to-teal-900/40" />
-      )}
-      
-      {/* Additional subtle overlay for depth - only show when we have a background */}
-      {(imageLoaded || videoLoaded) && (
-        <div className="absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent" />
-      )}
+      {/* Modern Gradient Overlay with medium greens */}
+      <div className="absolute inset-0 bg-gradient-to-br from-green-950/40 via-emerald-900/35 to-teal-900/40" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent" />
       
       {/* Content */}
       <div className="relative h-full flex items-center justify-center text-center z-10">
