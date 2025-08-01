@@ -1,4 +1,5 @@
 export const CONTACT_INFO = {
+  name: 'Ruslan Masurjak',
   phone: '+420 123 456 789',
   email: 'ruslan@zahradnik.cz',
   location: 'Brno a okolí',

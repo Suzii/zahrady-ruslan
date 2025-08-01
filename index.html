@@ -44,7 +44,7 @@
        "email": "{{CONTACT_EMAIL}}",
       "founder": {
         "@type": "Person",
-        "name": "Ruslan"
+        "name": "{{CONTACT_PERSON_NAME}}"
       },
       "address": {
         "@type": "PostalAddress",
@@ -90,6 +90,27 @@
           "telephone": "{{CONTACT_PHONE}}",
           "contactType": "customer service",
           "availableLanguage": "Czech"
+        }
+      }
+    </script>
+
+    <!-- Structured Data - Person -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "{{CONTACT_PERSON_NAME}}",
+        "jobTitle": "Zahradník",
+        "telephone": "{{CONTACT_PHONE}}",
+        "email": "{{CONTACT_EMAIL}}",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "{{CONTACT_LOCATION}}",
+          "addressCountry": "CZ"
+        },
+        "worksFor": {
+          "@type": "Organization",
+          "name": "{{BUSINESS_NAME}}"
         }
       }
     </script>

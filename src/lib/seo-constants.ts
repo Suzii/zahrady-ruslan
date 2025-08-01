@@ -7,6 +7,7 @@ export const SEO_CONSTANTS = {
   SITE_URL: 'https://zahrady-ruslan.lovable.app/',
   
   // Contact information (from constants)
+  CONTACT_PERSON_NAME: CONTACT_INFO.name,
   CONTACT_PHONE: CONTACT_INFO.phone,
   CONTACT_EMAIL: CONTACT_INFO.email,
   CONTACT_LOCATION: CONTACT_INFO.location,

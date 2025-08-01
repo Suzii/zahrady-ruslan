@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Phone, Mail, MapPin } from 'lucide-react';
+import { Phone, Mail, MapPin, User } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/use-scroll-animation';
 import { CONTACT_INFO, SERVICE_AREA_MAP_IMAGE } from '../lib/constants';
 
@@ -37,6 +37,16 @@ const Contact = () => {
                 <h3 className="text-xl font-playfair font-semibold text-gradient mb-6">Kontakt</h3>
                 
                 <div className="space-y-4">
+                  {/* Name */}
+                  <div className="flex items-center space-x-3 group">
+                    <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-lg" aria-hidden="true">
+                      <User className="w-5 h-5 text-white" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-500 font-medium">Zahradník</p>
+                      <span className="text-xl font-bold text-gradient" itemProp="name">{CONTACT_INFO.name}</span>
+                    </div>
+                  </div>
                   {/* Phone */}
                   <div className="flex items-center space-x-3 group">
                     <div className="w-10 h-10 bg-gradient-to-br from-green-600 to-emerald-600 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-lg" aria-hidden="true">
