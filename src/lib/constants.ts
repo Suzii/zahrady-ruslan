@@ -8,31 +8,31 @@ export const CONTACT_INFO = {
 
 export const GALLERY_IMAGES = [
   {
-    url: '/public/img/flower-beds.jpg',
+    url: '/img/flower-beds.jpg',
     description: 'Profesionální pokládka travních koberců pro dokonalý zelený trávník'
   },
   {
-    url: '/public/img/irrigation.jpg',
+    url: '/img/irrigation.jpg',
     description: 'Automatický zavlažovací systém pro efektivní péči o trávník a záhony'
   },
   {
-    url: '/public/img/trees-planting.jpg',
+    url: '/img/trees-planting.jpg',
     description: 'Výsadba okrasných keřů a stromů podle individuálních požadavků'
   },
   {
-    url: '/public/img/flower-beds2.jpg',
+    url: '/img/flower-beds2.jpg',
     description: 'Zakládání záhonů s mulčením'
   },
   {
-    url: '/public/img/stone-dry-wall.jpg',
+    url: '/img/stone-dry-wall.jpg',
     description: 'Suché zídky a skalky z přírodního kamene pro dekorativní prvky zahrady'
   },
   {
-    url: '/public/img/raised-beds.jpg',
+    url: '/img/raised-beds.jpg',
     description: 'Vyvýšené záhony na míru pro pohodlné pěstování zeleniny a bylinek'
   },
   {
-    url: '/public/img/stepping-stones.jpg',
+    url: '/img/stepping-stones.jpg',
     description: 'Zahradní chodníčky z přírodního kamene s profesionálním provedením'
   } 
 ] as const;
