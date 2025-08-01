@@ -17,10 +17,10 @@
     --popover: 255 255 255;
     --popover-foreground: 60 50 40;
 
-    --primary: 5 46 22;
+    --primary: 142 76 36;
     --primary-foreground: 250 248 245;
 
-    --secondary: 20 83 45;
+    --secondary: 158 64 45;
     --secondary-foreground: 60 50 40;
 
     --muted: 240 245 244;
@@ -34,7 +34,7 @@
 
     --border: 230 220 210;
     --input: 230 220 210;
-    --ring: 5 46 22;
+    --ring: 142 76 36;
 
     --radius: 0.75rem;
 
