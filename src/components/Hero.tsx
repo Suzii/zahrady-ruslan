@@ -4,19 +4,25 @@ import { HERO_VIDEO_SOURCE, HERO_PLACEHOLDER_IMAGE } from '../lib/constants';
 const Hero = () => {
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [showPlaceholder, setShowPlaceholder] = useState(true);
+  const [imageLoaded, setImageLoaded] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  // Use static image as placeholder
+  // Use static image as placeholder instead of canvas generation
   const placeholderImage = HERO_PLACEHOLDER_IMAGE;
 
   const handleVideoLoad = () => {
     setVideoLoaded(true);
-    setShowPlaceholder(false);
+    // Keep placeholder visible until video is fully visible
+    setTimeout(() => setShowPlaceholder(false), 200);
   };
 
   const handleVideoError = () => {
     console.warn('Video failed to load, keeping placeholder');
     setShowPlaceholder(true);
+  };
+
+  const handleImageLoad = () => {
+    setImageLoaded(true);
   };
 
   useEffect(() => {
@@ -60,14 +66,19 @@ const Hero = () => {
           style={{
             backgroundImage: `url('${placeholderImage}')`
           }}
+          onLoad={handleImageLoad}
         />
       )}
       
-      {/* Modern Gradient Overlay with medium greens */}
-      <div className="absolute inset-0 bg-gradient-to-br from-green-950/40 via-emerald-900/35 to-teal-900/40" />
+      {/* Modern Gradient Overlay with medium greens - only show when we have a background */}
+      {(imageLoaded || videoLoaded) && (
+        <div className="absolute inset-0 bg-gradient-to-br from-green-950/40 via-emerald-900/35 to-teal-900/40" />
+      )}
       
-      {/* Additional subtle overlay for depth */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent" />
+      {/* Additional subtle overlay for depth - only show when we have a background */}
+      {(imageLoaded || videoLoaded) && (
+        <div className="absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent" />
+      )}
       
       {/* Content */}
       <div className="relative h-full flex items-center justify-center text-center z-10">
