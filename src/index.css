@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -58,6 +56,11 @@
     @apply bg-background text-foreground font-inter;
     background: linear-gradient(180deg, #fafbf9 0%, #f0fdf4 25%, #ecfdf5 50%, #d1fae5 75%, #a7f3d0 100%);
     background-attachment: fixed;
+    /* Optimize font rendering */
+    font-display: swap;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   html {
