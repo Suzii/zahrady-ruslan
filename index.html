@@ -4,6 +4,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="theme-color" content="#064e3b" />
+    
     <title>{{META_TITLE}}</title>
     <meta name="description" content="{{META_DESCRIPTION}}" />
     <meta name="author" content="{{BUSINESS_NAME}}" />
@@ -46,23 +52,23 @@
       "alternateName": "{{BUSINESS_ALTERNATE_NAME}}",
       "description": "{{BUSINESS_DESCRIPTION}}",
       "url": "{{SITE_URL}}",
-             "telephone": "{{CONTACT_PHONE}}",
-       "email": "{{CONTACT_EMAIL}}",
+      "telephone": "{{CONTACT_PHONE}}",
+      "email": "{{CONTACT_EMAIL}}",
       "founder": {
         "@type": "Person",
         "name": "{{CONTACT_PERSON_NAME}}"
       },
       "address": {
         "@type": "PostalAddress",
-                 "addressLocality": "{{CONTACT_LOCATION}}",
+        "addressLocality": "{{CONTACT_LOCATION}}",
         "addressCountry": "CZ"
       },
       "areaServed": {
         "@type": "GeoCircle",
         "geoMidpoint": {
           "@type": "GeoCoordinates",
-          "latitude": {{LATITUDE}},
-          "longitude": {{LONGITUDE}}
+          "latitude": "{{LATITUDE}}",
+          "longitude": "{{LONGITUDE}}"
         },
         "geoRadius": "{{SERVICE_RADIUS}}"
       },
