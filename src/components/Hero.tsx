@@ -1,46 +1,13 @@
-import React, { useState, useRef, useEffect, useMemo } from 'react';
-import { HERO_VIDEO_SOURCE } from '../lib/constants';
+import React, { useState, useRef, useEffect } from 'react';
+import { HERO_VIDEO_SOURCE, HERO_PLACEHOLDER_IMAGE } from '../lib/constants';
 
 const Hero = () => {
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [showPlaceholder, setShowPlaceholder] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  // Memoize placeholder generation to avoid recreating on every render
-  const placeholderImage = useMemo(() => {
-    const canvas = document.createElement('canvas');
-    canvas.width = 1920;
-    canvas.height = 1080;
-    const ctx = canvas.getContext('2d');
-    
-    if (ctx) {
-      // Create a modern gradient background with darker greens
-      const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-      gradient.addColorStop(0, '#052e16');
-      gradient.addColorStop(0.3, '#064e3b');
-      gradient.addColorStop(0.7, '#0f766e');
-      gradient.addColorStop(1, '#042f2e');
-      
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      
-      // Add subtle texture
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.03)';
-      for (let i = 0; i < 150; i++) {
-        ctx.beginPath();
-        ctx.arc(
-          Math.random() * canvas.width,
-          Math.random() * canvas.height,
-          Math.random() * 2 + 1,
-          0,
-          2 * Math.PI
-        );
-        ctx.fill();
-      }
-    }
-    
-    return canvas.toDataURL('image/jpeg', 0.8);
-  }, []);
+  // Use static image as placeholder
+  const placeholderImage = HERO_PLACEHOLDER_IMAGE;
 
   const handleVideoLoad = () => {
     setVideoLoaded(true);

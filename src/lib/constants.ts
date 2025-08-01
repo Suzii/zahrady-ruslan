@@ -45,4 +45,5 @@ export const NAV_ITEMS = [
 
 export const SERVICE_AREA_MAP_IMAGE = 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
 
-export const HERO_VIDEO_SOURCE = '/hero.mp4'; 
+export const HERO_VIDEO_SOURCE = '/hero.mp4';
+export const HERO_PLACEHOLDER_IMAGE = '/hero-img.jpg'; 
