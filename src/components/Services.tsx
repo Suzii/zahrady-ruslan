@@ -47,7 +47,7 @@ const Services = () => {
     },
     {
       title: 'Vyvýšené záhony',
-      description: 'Konstrukce praktických vyvýšených záhonů na míru pro snadnější pěstování',
+      description: 'Konstrukce vyvýšených záhonů na míru pro snadnější pěstování',
       icon: Flower2,
       gradient: 'from-emerald-600 to-teal-600'
     }
