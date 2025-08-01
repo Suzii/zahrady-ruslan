@@ -13,7 +13,7 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
-Sitemap: https://zahrady-ruslan.lovable.app/sitemap.xml
+Sitemap: https://zahrady-ruslan.cz/sitemap.xml
 
 # Block AI crawlers from training on our content
 User-agent: GPTBot

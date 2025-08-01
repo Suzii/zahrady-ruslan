@@ -4,31 +4,31 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
-    <loc>https://zahrady-ruslan.lovable.app/</loc>
+    <loc>https://zahrady-ruslan.cz/</loc>
     <lastmod>2025-01-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://zahrady-ruslan.lovable.app/#uvod</loc>
+    <loc>https://zahrady-ruslan.cz/#uvod</loc>
     <lastmod>2025-01-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://zahrady-ruslan.lovable.app/#sluzby</loc>
+    <loc>https://zahrady-ruslan.cz/#sluzby</loc>
     <lastmod>2025-01-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://zahrady-ruslan.lovable.app/#galerie</loc>
+    <loc>https://zahrady-ruslan.cz/#galerie</loc>
     <lastmod>2025-01-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://zahrady-ruslan.lovable.app/#kontakt</loc>
+    <loc>https://zahrady-ruslan.cz/#kontakt</loc>
     <lastmod>2025-01-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

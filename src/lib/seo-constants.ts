@@ -4,7 +4,7 @@ import { CONTACT_INFO } from './constants';
 export const SEO_CONSTANTS = {
   // Site information
   SITE_NAME: 'Zahrady Ruslan',
-  SITE_URL: 'https://zahrady-ruslan.lovable.app/',
+  SITE_URL: 'https://zahrady-ruslan.cz',
   
   // Contact information (from constants)
   CONTACT_PERSON_NAME: CONTACT_INFO.name,
@@ -27,8 +27,8 @@ export const SEO_CONSTANTS = {
   OPENING_HOURS: 'Mo-Fr 08:00-17:00',
   
   // Images
-  OG_IMAGE: 'https://zahrady-ruslan.lovable.app/og-image.jpg',
-  LOGO_IMAGE: 'https://zahrady-ruslan.lovable.app/logo.png',
+  OG_IMAGE: 'https://zahrady-ruslan.cz/og-image.jpg',
+  LOGO_IMAGE: 'https://zahrady-ruslan.cz/logo.png',
   
   // Meta information
   META_TITLE: 'Ruslan - Zahradnické služby Brno | Realizace a udržba zahrad',
